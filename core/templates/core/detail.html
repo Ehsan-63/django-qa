@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>{{ question.title }}</h3>
+    <smal>{{ question.created }} - {{ question.user }}</smal>
+    <p>{{ question.body }}</p> <hr>
+
+    {% for answer in question.answers.all %}
+        <p>{{ answer.body }} - {{ answer.user }}</p>
+    {% endfor %}
+
+{% endblock %}

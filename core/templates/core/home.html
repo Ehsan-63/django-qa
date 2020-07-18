@@ -2,4 +2,9 @@
 
 {% block content %}
     <h3>Home</h3>
+    <div class="card">
+        {% for question in questions %}
+            <a href="{{ question.get_absolute_url }}" class="card-body">{{ question.title }}</a>
+        {% endfor %}
+    </div>
 {% endblock %}
