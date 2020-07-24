@@ -2,6 +2,12 @@
 
 {% block content %}
     <h3>Home</h3>
+
+    <form action="">
+        {{ form.as_p }}
+        <input type="submit" value="Search">
+    </form>
+
     <div class="card">
         {% for question in questions %}
             <a href="{{ question.get_absolute_url }}" class="card-body">{{ question.title }}</a>
