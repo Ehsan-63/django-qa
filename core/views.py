@@ -16,12 +16,7 @@ class Home(View):
 			form = self.form_class(request.GET)
 			if form.is_valid():
 				query = form.cleaned_data['search']
-				questions = questions.annotate(
-						similarity = Greatest(
-							TrigramSimilarity('title', query),
-							TrigramSimilarity('body', query)
-						)
-				).filter(similarity__gt=0).order_by('-similarity')
+				questions = questions.annotate(similarity = Greatest(TrigramSimilarity('title', query), TrigramSimilarity('body', query))).filter(similarity__gt=0).order_by('-similarity')
 		return render(request, 'core/home.html', {'questions':questions, 'form':form})
 
 
